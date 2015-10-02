@@ -8,8 +8,21 @@ var queryString = require("querystring");
 // Set up the API call
 
 // Connect to the API url
-var vadioAPI = "http://api.vadio.com/v0.9c/video?artist=Bruno%20Mars&title=Uptown%20Funk&country=US";
+var vadioAPI = "api.vadio.com";
 var context = "video";
+
+var vadioOptions = {
+  artist: "Bruno Mars",
+  title: "Uptown Funk",
+  country: "US"
+};
+
+var query = "/v0.9c/" + context + "?" + queryString.stringify(vadioOptions);
+
+var requestOptions = {
+  host: vadioAPI,
+  path: query
+};
 
 // Set up the callback
 var callback = function(response) {
@@ -23,7 +36,7 @@ var callback = function(response) {
 };
 
 // Read the data from the response
-var request = http.get(vadioAPI, callback);
+var request = http.get(requestOptions, callback);
 
 // Handle errors from the response
 request.on("error", function(error){

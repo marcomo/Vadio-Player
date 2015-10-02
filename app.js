@@ -5,6 +5,35 @@
 var http = require("http");
 var queryString = require("querystring");
 
+// Set up a server
+
+// Setup port
+const PORT = 8080;
+
+// Function which handles requests and responses
+function handleRequest(request, response){
+  response.writeHead(200, {"Content-Type": "text/html"});
+  response.write("<!DOCTYPE 'html'>");
+  response.write("<html>");
+  response.write("<head>");
+  response.write("<title>Hello World Page</title>");
+  response.write("</head>");
+  response.write("<body>");
+  response.write("<h1>Hello World!</h1>");
+  response.write("</body>");
+  response.write("</html>");
+  response.end();
+}
+
+// Create a server
+var server = http.createServer(handleRequest);
+
+// Start server
+server.listen(PORT, function(){
+    //Callback triggered when server is successfully listening
+    console.log("Server listening on: http://localhost:%s", PORT);
+});
+
 // Set up the API call
 
 // Connect to the API url

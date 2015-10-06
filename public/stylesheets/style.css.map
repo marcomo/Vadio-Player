@@ -2,9 +2,9 @@
 	"version": 3,
 	"file": "style.css",
 	"sources": [
-		"style.sass"
+		"style.scss"
 	],
 	"sourcesContent": [],
-	"mappings": "AAAA,IAAI,CAAC;EACH,OAAO,EAAE,IAAK;EACd,IAAI,EAAE,kDAAmD,GAFrD;;AAIN,CAAC,CAAC;EACA,KAAK,EAAE,OAAQ,GADd",
+	"mappings": "AAAA,IAAI,CAAC;EACH,WAAW,EAAE,6CAA8C;EAC3D,SAAS,EAAE,IAAK;EAChB,SAAS,EAAE,KAAM;EACjB,MAAM,EAAE,IAAK,GAJT;;AAON,CAAC,CAAC;EACA,KAAK,EAAE,OAAQ,GADd;;AAIH,MAAM,CAAC;EACL,MAAM,EAAE,KAAM;EACd,KAAK,EAAE,KAAM,GAFP",
 	"names": []
 }

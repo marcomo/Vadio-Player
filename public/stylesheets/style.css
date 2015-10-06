@@ -1,8 +1,14 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  max-width: 960px;
+  margin: auto; }
 
 a {
   color: #00B7FF; }
+
+.thumb {
+  height: 10rem;
+  width: 10rem; }
 
 /*# sourceMappingURL=style.css.map */

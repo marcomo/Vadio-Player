@@ -1,7 +1,7 @@
-doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+  include ./partials/_head.jade
+  body#page-top
+    include ./partials/_header.jade
     block content
+    include ./partials/_footer.jade
+  

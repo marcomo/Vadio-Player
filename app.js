@@ -8,9 +8,11 @@ var express = require('express'),
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(sass({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: true,
+  indentedSyntax: false,
+  debug: true,
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));

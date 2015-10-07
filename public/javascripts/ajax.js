@@ -13,6 +13,14 @@ function loadResults(data) {
   }
 }
 
+function loadNoResults() {
+  $("#data").html("Sorry, no results found.");
+}
+
+function hideForm() {
+  $("#search-vadio").fadeOut();
+}
+
 function makeVideos(data) {
   var vids = Object.keys(data.videoEntries).map(function(value){
     return data.videoEntries[value];

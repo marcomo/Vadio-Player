@@ -54,7 +54,9 @@ function getVadio(params, cb) {
     });
 
     response.on('error', function(error){
-      console.error(error.message);
+      var msg = error.message;
+      console.error(msg);
+      cb(msg);
     });
   });  
 }

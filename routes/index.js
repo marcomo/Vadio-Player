@@ -24,6 +24,8 @@ router.get('/vadio', function(req, res, next) {
 
 router.get('/searching', function(req, res){
   var params = req.query;
+  if (!params['country'])
+    params['country'] = 'US';
   getVadio(params, function(data){
     res.send(data);
   });

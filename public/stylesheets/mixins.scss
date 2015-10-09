@@ -1,3 +1,5 @@
+// Font mixins
+
 @mixin sans-font {
   font-family: "source-sans-pro";
 }
@@ -151,7 +153,11 @@
   padding: 0 40px;
 }
 
-@mixin overlay {
+@mixin pos-rel {
+  position: relative;
+}
+
+@mixin pos-abs {
   position: absolute;
   left: 0;
   top: 0;
@@ -164,4 +170,12 @@
   left: 0;
   bottom: 0;
   width: 100%;
+}
+
+// Effect mixins
+
+@mixin drop-shadow($x, $y, $blur, $color) {
+  -webkit-filter: drop-shadow($x $y $blur $color);
+  -o-filter: drop-shadow($x $y $blur $color);
+  filter: drop-shadow($x $y $blur $color);
 }

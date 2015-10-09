@@ -1,19 +1,28 @@
 extends layout
 
 block content
-  h1= title
-  p #{title} for your favorite videos
-  div#images
-  p#data Data: #{data}
 
-  form(id="search-vadio" method="get" action="/searching")
-    label(for="title") Title
-    input(id="title" type="text" name="title" value="Uptown Funk")
-    br
-    label(for="artist") Artist
-    input(id="artist" type="text" name="artist" value="Bruno Mars")
-    br
-    label(for="country") Country
-    input(id="country" type="text" name="country" value="US")
-    br
-    button(type="submit") Submit
+  main
+    section#video-player
+      section#preview
+        #vid-thumbs
+          div.video-preview
+          div.video-preview
+          div.video-preview
+          div.video-preview
+          div.video-preview
+        div#start-search
+          div#start-button
+    section#form
+      p Find videos by artist, title, or country.
+      form(id="search-vadio" method="get" action="/searching")
+        //- label(for="title") Title
+        input(id="title" type="text" name="title" placeholder="Title")
+        //- label(for="artist") Artist
+        input(id="artist" type="text" name="artist" placeholder="Artst")
+        //- label(for="country") Country
+        input(id="country" type="text" name="country" placeholder="Country")
+        button(type="submit") Submit
+    section#player
+      div#results
+      div#playlist

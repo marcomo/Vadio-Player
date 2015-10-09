@@ -1,0 +1,10 @@
+section#form.hidden
+  p Find videos by artist, title, or country.
+  form(id="search-vadio" method="get" action="/searching")
+    //- label(for="title") Title
+    input(id="title" type="text" name="title" placeholder="Title")
+    //- label(for="artist") Artist
+    input(id="artist" type="text" name="artist" placeholder="Artst")
+    //- label(for="country") Country
+    input(id="country" type="text" name="country" placeholder="Country")
+    button(type="submit") Submit

@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+
+  main
+    section#video-player
+      include ./partials/_welcome.jade
+    include ./partials/_form.jade
+    section#player
+      div#results
+      div#playlist

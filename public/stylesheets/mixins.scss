@@ -159,6 +159,10 @@
 
 @mixin pos-abs {
   position: absolute;
+}
+
+@mixin fill-parent {
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;

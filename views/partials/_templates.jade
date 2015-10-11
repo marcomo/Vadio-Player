@@ -1,0 +1,26 @@
+template#searchlist-item
+  li.result
+    div.thumb
+    div.info
+      p.title
+      p.artist
+    div.controls
+      div.play
+        img(src="/images/glyphicons-174-play.png")
+      div.plus
+        img(src="/images/glyphicons-433-plus.png")
+
+template#playlist-item
+  li.result
+    div.thumb
+    div.info
+      p.title
+      p.artist
+    div.controls
+      div.play
+        img(src="/images/glyphicons-174-play-reverse.png")
+      div.plus
+        img(src="/images/glyphicons-434-minus-reverse.png")
+
+template#yt-embed
+  iframe(frameborder="0" style="width: 100%; height: 100%" allowfullscreen)

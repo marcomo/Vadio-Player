@@ -84,15 +84,59 @@ function makeVideos(data) {
   for (var i = 0; i < vids.length; i++) {
     videos.push(new Video(vids[i]));
   };
+function loadVideoTemplate(clone, video) { 
+  clone.querySelector('li').dataset.id = video.id;
+  if (video.artist) {
+    clone.querySelector('.artist').innerText = video.artist;
+  }
+  clone.querySelector('.title').innerText = video.title;
+  var bgUrl = 'url("' + video.image + '")';
+  clone.querySelector('.thumb').style.backgroundImage = bgUrl;
+  return clone;
 }
 
-function loadVideoThumbs() {
-  for (var i = 0; i < videos.length; i++) {
-    var imgTag = videos[i].thumbImageTag();
-    console.log(imgTag);
-    $("#images").append(imgTag);
+function getVideoUrl(video) {
+  var videoType = video.videoType;
+  var videoPath;
+  switch (videoType) {
+    case 'yt':
+      videoPath = 'http://www.youtube.com/embed/' + video.videoId + '?autoplay=1'
   }
-};
+  return videoPath;
+}
+
+function getEmbedTemplate(type) {
+  // Load embedded video template
+  var template;
+  switch (type) {
+    case "yt":
+      template = document.querySelector('#yt-embed');
+  }
+  return document.importNode(template.content, true);
+}
+
+}
+
+function loadToSearchList(videos) {
+  var items = [];
+  for (var i = 0; i < videos.length; i++) {
+    var template = getTemplate('searchlist');
+    var data = {
+      'artist': videos[i].artist,
+      'title': videos[i].title,
+      'image': videos[i].preferredThumb().url,
+      'id': videos[i].videoId
+    };
+    var clone = loadVideoTemplate(template, data);
+    items.push(clone);
+  };
+  var searchList = document.getElementById('searchlist');
+  var topResult = searchList.firstChild;
+  for (var i = 0; i < items.length; i++) {
+    searchList.insertBefore(items[i], topResult);
+  }
+  bindPlayEvents('searchlist');
+}
 
 function showData(data) {
   $("#data").html(data);

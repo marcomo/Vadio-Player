@@ -77,17 +77,12 @@ function videosFromLocalStorage() {
   return stagedVideos;
 }
 
-function hideForm() {
-  $("#search-vadio").fadeOut();
+function getTemplate(type) {
+  // Load search list template
+  var template = document.getElementById(type + '-item');
+  return document.importNode(template.content, true);
 }
 
-function makeVideos(data) {
-  var vids = Object.keys(data.videoEntries).map(function(value){
-    return data.videoEntries[value];
-  });
-  for (var i = 0; i < vids.length; i++) {
-    videos.push(new Video(vids[i]));
-  };
 function loadVideoTemplate(clone, video) { 
   clone.querySelector('li').dataset.id = video.id;
   if (video.artist) {

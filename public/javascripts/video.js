@@ -24,7 +24,7 @@ Video.prototype = {
     var i = 0;
     while (thumb == undefined) {
       var res = resPrefs[i];
-      var thumbAtRes = this.findByRes(this.thumbs, res);
+      var thumbAtRes = this.findByRes(res);
       if (thumbAtRes)
         thumb = thumbAtRes;
       i++;
@@ -32,16 +32,8 @@ Video.prototype = {
     return thumb;
   },
 
-  thumbImageTag: function() {
-    return "<div " +
-           "class='thumb' " +
-           "style='background-image:" +
-           "url(" + this.preferredThumb().url + ")" +
-           "'></div>";
-  },
-
-  findByRes: function(thumbs, res) {
-    return thumbs.filter(function(i) {
+  findByRes: function(res) {
+    return this.thumbnails.filter(function(i) {
       return i.resolution == res;
     })[0];
   }

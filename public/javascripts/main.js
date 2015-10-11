@@ -14,7 +14,8 @@ $(document).ready(function() {
   // Messages for the user  
   var msgs = {
     'no-results': 'Sorry, no results at this time. Please try another search.',
-    'server-down': 'Sorry, our servers are not responding at this time. Please try again later.'
+    'no-response': 'Sorry, our servers are not responding at this time. Please try again later.',
+    'no-query-data': 'Looks like you used incorrect country code. Please try again or leave it blank.'
   };
 
 
@@ -281,23 +282,20 @@ $(document).ready(function() {
   }
 
 
-  // Prints a message to the user for 5 seconds
-  function printErrorMsg(msg) {
+  // Prints a message to the user for the amount
+  // of time provided. If a time argument is not provided,
+  // the message will not be removed from view.
+  function printErrorMsg(msg, timeout) {
     console.log(msg);
     var msgBox = document.getElementById('message-box');
     var span = msgBox.querySelector('span');
     span.innerText = msg;
     span.classList.remove('invisible');
-    window.setTimeout(function() {
-      span.classList.add('invisible');
-    }, 5000);
-  }
-
-
-  // Gets the status code of success data
-  // that doesn't yield video results
-  function statusCode(data) {
-    return data.meta.status_code;
+    if (timeout) {
+      window.setTimeout(function() {
+        span.classList.add('invisible');
+      }, timeout);
+    }
   }
 
 
@@ -330,17 +328,27 @@ $(document).ready(function() {
       
       success: function(data) {
         if (data.meta) {
-          if (statusCode(data) === 504) {
-            printErrorMsg(msgs['no-results']);
+          if (data.meta.status_code === 504) {
+            console.log(504);
+            printErrorMsg(msgs['no-results'], 5000);
           }
+        } else if (data.code === 404) {
+            printErrorMsg(msgs['no-query-data']);
         } else {
+          console.log(data);
           loadVideosFromAPI(data);
         }
       },
 
       error: function(req, stat, err) {
+        console.log(stat);
+        console.log(err.message);
         console.log(msgs['server-down']);
         printErrorMsg(msgs['server-down']);
+      },
+
+      complete: function(req, stat) {
+        console.log(stat);
       }
     });
   });

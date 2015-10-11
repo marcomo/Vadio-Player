@@ -10,6 +10,29 @@ $previewImages:
   "/images/katy_perry.jpg"
   "/images/bastille.jpg"
   "/images/farrell_williams.jpg";
+#about {
+  background-color: $color9;
+  height: 20vh;
+  @include transition(height, 400ms, ease-in);
+  @include pos-rel;
+  &.closed {
+    height: 0vh;
+  }
+  #about-flag {
+    @include down-point($color9);
+    @include border-box;
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+    bottom: -2rem;
+    right: 10%;
+    text-align: center;
+    line-height: 2rem;
+    color: white;
+    font-size: 1rem;
+    padding-bottom: .6rem;
+  }
+}
 
 body {
   font-family: "Adelle", serif;

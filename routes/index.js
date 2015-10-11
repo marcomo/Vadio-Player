@@ -15,11 +15,7 @@ var vadioAPI = "api.vadio.com",
 // Requests
 
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
-});
-
-router.get('/vadio', function(req, res, next) {  
-  res.render('search', {title: 'Search Vadio'});
+  res.render('index');
 });
 
 router.get('/searching', function(req, res){

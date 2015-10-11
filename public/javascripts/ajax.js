@@ -184,19 +184,37 @@ function loadToPlaylist(videos) {
 }
 
 $(document).ready(function() {
-    $("#search-vadio").on("submit", function(e) {
-        e.preventDefault();
-        var params = $(this).serialize();
-        $.ajax({
-          dataType: 'json',
-          url: "/searching",
-          data: params,
-          success: function(data) {
-            loadResults(data);
-          },
-          error: function(req, stat, err) {
-            console.log("an error has occured");
-          }
-        })
-    })
+
+
+  // Load the playlist
+  $.ajax({
+    url: '/',
+    success: function() {
+      var videos = videosFromLocalStorage();
+      loadToPlaylist(videos);
+    },
+    error: function(req, stat, err) {
+      console.log('an error has occured');
+      console.log(err.message);
+    }
+  })
+
+  // Send a query to the Vadio API
+  $('#search-vadio').on('submit', function(e) {
+    console.log('submitting...');
+    e.preventDefault();
+    var params = $(this).serialize();
+    $.ajax({
+      dataType: 'json',
+      url: '/searching',
+      data: params,
+      success: function(data) {
+        loadVideosFromAPI(data);
+      },
+      error: function(req, stat, err) {
+        console.log('an error has occured');
+        console.log(err.message);
+      }
+    });
+  });
 });

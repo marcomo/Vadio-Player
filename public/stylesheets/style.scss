@@ -35,9 +35,10 @@ $previewImages:
 }
 
 body {
+  @include flex-parent;
+  @include flex-column;
   font-family: "Adelle", serif;
   font-size: 10px;
-  max-width: 960px;
   margin: 0 auto;
 }
 
@@ -49,7 +50,9 @@ header, footer {
 }
 
 header {
-  margin-bottom: 4rem;
+  @include inner-width;
+  @include flex-item(1);
+  height: 20vh;
   .logo {
     color: $vadioBlue;
     img {

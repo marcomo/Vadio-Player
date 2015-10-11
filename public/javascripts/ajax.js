@@ -34,9 +34,20 @@ function storeLocally(video) {
   playlist.setItem(video.videoId, dataString);
 }
 
+function storeSearchResult(video) {
+  var dataString = JSON.stringify(video);
+  searchResults[video.videoId] = dataString;
+}
+
 function addToPlaylist() {
   for (var i = 0; i < stagedVideos.length; i++) {
     storeLocally(videos[i]);
+  }
+}
+
+function addToSearchResults(videos) {
+  for (var i = 0; i < videos.length; i++) {
+    storeSearchResult(videos[i]);
   }
 }
 

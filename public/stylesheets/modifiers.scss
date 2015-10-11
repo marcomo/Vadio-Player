@@ -18,3 +18,7 @@
 .transition-bgcolor {
   @include transition(background-color, 400ms, ease-in);
 }
+
+.transition-opacity {
+  @include transition(opacity, 400ms, ease-in);
+}

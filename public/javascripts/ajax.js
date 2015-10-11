@@ -12,6 +12,9 @@ function objectifyPlaylist() {
 
 var playlistObjs = objectifyPlaylist();
 
+function loadNoResults() {
+  $('#data').html('Sorry, no results found.');
+}
 
 // Returns an array of Video objects
 function makeVideos(vids) {
@@ -51,17 +54,17 @@ function addToSearchResults(videos) {
   }
 }
 
+function loadVideosFromAPI(data) {
   if (data === null) {
     loadNoResults();
   } else {
-    makeVideos(data);
-    console.log(videos);
-    loadVideoThumbs();
+    var newVideos = videosFromData(data);
+    addToSearchResults(newVideos);
+    addToStagedVideos(newVideos);
+    loadToSearchList(stagedVideos);
   }
 }
 
-function loadNoResults() {
-  $("#data").html("Sorry, no results found.");
 function videosFromLocalStorage() {
   var videos = playlistObjs.map(function(obj) {
     return JSON.parse(obj);

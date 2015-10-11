@@ -98,7 +98,7 @@ main {
 
 #form {
   @include inner-width;
-  padding: 5vh;
+  padding: 2rem 0 1rem;
   form {
     @include flex-parent;
     @include flex-wrap;
@@ -178,6 +178,21 @@ main {
       color: white;
     }
   }
+}
+
+#message-box {
+  @include inner-width;
+  margin-bottom: 1rem;
+  color: white;
+  font-size: 1rem;
+  text-align: center;
+  span {
+    @include transition(opacity, 400ms, ease-in);
+    padding: .25rem .5rem;
+    border-radius: $borderRadius;
+    background-color: $colorBGdark;
+  }
+  text-align: center;
 }
 
 #search-box {

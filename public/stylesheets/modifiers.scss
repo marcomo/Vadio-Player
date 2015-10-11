@@ -5,3 +5,8 @@
 .invisible {
   @include invisible;
 }
+
+.closed {
+  height: 0;
+  overflow: hidden;
+}

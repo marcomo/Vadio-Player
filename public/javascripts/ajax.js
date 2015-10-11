@@ -1,3 +1,8 @@
+var msgs = {
+  'no-results': 'Sorry, no results at this time. Try another search.',
+  'server-down': 'Sorry, our servers are not responding at this time. Try again later.'
+}
+
 var stagedVideos = [];
 var searchResults = {};
 
@@ -184,6 +189,21 @@ function loadToPlaylist(videos) {
   bindPlayEvents('playlist');
 }
 
+function printErrorMsg(msg) {
+  console.log(msg);
+  var msgBox = document.getElementById('message-box');
+  var span = msgBox.querySelector('span');
+  span.innerText = msg;
+  span.classList.remove('invisible');
+  window.setTimeout(function() {
+    span.classList.add('invisible');
+  }, 5000);
+}
+
+function statusCode(data) {
+  return data.meta.status_code;
+}
+
 $(document).ready(function() {
 
 
@@ -210,7 +230,13 @@ $(document).ready(function() {
       url: '/searching',
       data: params,
       success: function(data) {
-        loadVideosFromAPI(data);
+        if (data.meta) {
+          if (statusCode(data) === 504) {
+            printErrorMsg(msgs['no-results']);
+          }
+        } else {
+          loadVideosFromAPI(data);
+        }
       },
       error: function(req, stat, err) {
         console.log('an error has occured');

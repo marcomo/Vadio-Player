@@ -176,6 +176,12 @@
   width: 100%;
 }
 
+@mixin border-box {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 // Effect mixins
 
 @mixin drop-shadow($x, $y, $blur, $color) {

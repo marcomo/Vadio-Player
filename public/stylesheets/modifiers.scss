@@ -10,3 +10,11 @@
   height: 0;
   overflow: hidden;
 }
+
+.transition-height {
+  @include transition(height, 400ms, ease-in);
+}
+
+.transition-bgcolor {
+  @include transition(background-color, 400ms, ease-in);
+}

@@ -189,3 +189,39 @@
   -o-filter: drop-shadow($x $y $blur $color);
   filter: drop-shadow($x $y $blur $color);
 }
+
+// Animations
+
+@mixin transition($prop, $dur, $timing) {
+  transition: $prop $dur $timing;
+}
+
+@mixin keyframes($name) {
+  @-webkit-keyframes $name {
+    @content;
+  }
+  @-moz-keyframes $name {
+    @content;
+  }
+  @-o-keyframes $name {
+    @content;
+  }
+  @keyframes $name {
+    @content;
+  }
+}
+
+@mixin animate($name, $duration, $timing, $delay, $iteration, $fillMode) {
+  -webkit-animation: $name $duration $timing $delay $iteration $fillMode;
+  -moz-animation: $name $duration $iteration $delay $timing $fillMode;
+  -o-animation: $name $duration $iteration $delay $timing $fillMode;
+  animation: $name $duration $iteration $delay $timing $fillMode;
+}
+
+// Shapes
+
+@mixin down-point($color) {
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  background-color: $color;
+}

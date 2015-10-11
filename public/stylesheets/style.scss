@@ -40,13 +40,15 @@ body {
   font-family: "Adelle", serif;
   font-size: 10px;
   margin: 0 auto;
+  line-height: initial;
 }
 
 a {
   color: #00B7FF;
 }
 
-header, footer {
+h1 {
+  font-size: 2rem;
 }
 
 header {

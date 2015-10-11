@@ -1,10 +1,22 @@
 var searchData;
 var videos = [];
 
-function loadResults(data) {
-  // showData(JSON.stringify(data));
-  hideForm();
-  // console.log(data);
+// Returns an array of Video objects
+function makeVideos(vids) {
+  var newVideos = vids.map(function(value) {
+    return new Video(value);
+  });
+  return newVideos;
+}
+
+// Return an array of videoEntries from data
+function videosFromData(data) {
+  var videos = Object.keys(data.videoEntries).map(function(value) {
+    return data.videoEntries[value];
+  });
+  return makeVideos(videos);
+}
+
   if (data === null) {
     loadNoResults();
   } else {

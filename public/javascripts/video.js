@@ -36,5 +36,9 @@ Video.prototype = {
     return this.thumbnails.filter(function(i) {
       return i.resolution == res;
     })[0];
+  },
+
+  inPlaylist: function(playlist) {
+    return playlist.indexOf(this.videoId) >= 0
   }
 }

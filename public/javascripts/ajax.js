@@ -119,8 +119,9 @@ function embedVideo(url) {
   player.querySelector('iframe').src = url;
 }
 
-function playVideo(listId) {
+function playVideo() {
   document.getElementById('player').classList.remove('closed');
+  var listId = $(this).closest('ul');
   var listItem = $(this).closest('li');
   var id = listItem.attr('data-id');
   var video;
@@ -135,9 +136,9 @@ function playVideo(listId) {
 
 function bindPlayEvents(list) {
   var list = document.getElementById(list);
-  var playButtons = list.querySelector('.play');
+  var playButtons = list.querySelectorAll('.play');
   for(var i = 0; i < playButtons.length; i++) {
-    playButtons[i].addEventListener('click', playVideo(list.id), false);
+    playButtons[i].addEventListener('click', playVideo, false);
   }
 }
 

@@ -1,5 +1,17 @@
-var searchData;
-var videos = [];
+var stagedVideos = [];
+var searchResults = {};
+
+var playlist = window.localStorage;
+var playlistIDs = Object.keys(playlist);
+
+function objectifyPlaylist() {
+  return playlistIDs.map(function(value) {
+    return playlist.getItem(value);
+  });
+}
+
+var playlistObjs = objectifyPlaylist();
+
 
 // Returns an array of Video objects
 function makeVideos(vids) {
@@ -15,6 +27,17 @@ function videosFromData(data) {
     return data.videoEntries[value];
   });
   return makeVideos(videos);
+}
+
+function storeLocally(video) {
+  var dataString = JSON.stringify(video);
+  playlist.setItem(video.videoId, dataString);
+}
+
+function addToPlaylist() {
+  for (var i = 0; i < stagedVideos.length; i++) {
+    storeLocally(videos[i]);
+  }
 }
 
   if (data === null) {

@@ -11,10 +11,6 @@ $(document).ready(function() {
   var playlistObjs = objectifyPlaylist();
 
 
-  // Preferred image resolution order
-  var resPrefs = ["medium", "high", "default"];
-
-
   // Messages for the user  
   var msgs = {
     'no-results': 'Sorry, no results at this time. Please try another search.',
@@ -28,44 +24,6 @@ $(document).ready(function() {
 
   // searchResults holds JSON of the most recent search data
   var searchResults = {};
-
-  
-  // Video class
-  function Video(obj) { 
-    this.artist = obj.artist;
-    this.title = obj.title;
-    this.videoId = obj.videoId;
-    this.duration = obj.duration;
-    this.thumbnails = obj.thumbnails;
-    this.videoType = obj.videoType;
-  }
-
-
-  // Video class functions
-  Video.prototype = {
-    preferredThumb: function() {
-      var thumb;
-      var i = 0;
-      while (thumb == undefined) {
-        var res = resPrefs[i];
-        var thumbAtRes = this.findByRes(res);
-        if (thumbAtRes)
-          thumb = thumbAtRes;
-        i++;
-      }
-      return thumb;
-    },
-
-    findByRes: function(res) {
-      return this.thumbnails.filter(function(i) {
-        return i.resolution == res;
-      })[0];
-    },
-
-    inPlaylist: function(playlist) {
-      return playlist.indexOf(this.videoId) >= 0
-    }
-  }
 
 
   // Gets the template for list items from HTML <head>
@@ -140,13 +98,36 @@ $(document).ready(function() {
   }
 
 
+  // Adds a video in the search list to the playlist
+  function addVideo() {
+    var listItem = $(this).closest('li');
+    var id = listItem.attr('data-id');
+    video = JSON.parse(searchResults[id]);
+    video = new Video(video);
+    loadToList([video], 'playlist');
+    addToPlaylist(video);
+  }
+
+
   // Binds an event listener to all play buttons
-  // for aspecified list
+  // for a specified list
   function bindPlayEvents(listView) {
     var playButtons = listView.querySelectorAll('.play');
     
     for(var i = 0; i < playButtons.length; i++) {
       playButtons[i].addEventListener('click', playVideo, false);
+    }
+  }
+
+
+  // Binds an event listener to all add buttons
+  // for a specified list
+  function bindAddEvents() {
+    var searchList = document.getElementById('searchlist');
+    var addButtons = searchList.querySelectorAll('.plus');
+    
+    for(var i = 0; i < addButtons.length; i++) {
+      addButtons[i].addEventListener('click', addVideo, false);
     }
   }
 
@@ -225,6 +206,7 @@ $(document).ready(function() {
 
   // Captures the data needed for the view
   function selectData(video) {
+    console.log(video);
     return {
       'artist': video.artist,
       'title': video.title,
@@ -239,7 +221,6 @@ $(document).ready(function() {
     var items = [];
     var listView = document.getElementById(list);
 
-    
     // Build all the results
     for (var i = 0; i < videos.length; i++) {
       var template = getListTemplate(list);
@@ -247,8 +228,6 @@ $(document).ready(function() {
       var clone = loadVideoTemplate(template, data);
       items.push(clone);
     }
-
-    console.log(items);
 
     // Then load them all at once
     for (var i = 0; i < items.length; i++) {
@@ -259,6 +238,9 @@ $(document).ready(function() {
     }
 
     bindPlayEvents(listView);
+    if (list === 'searchlist') {
+      bindAddEvents(listView);
+    }
   }
 
 

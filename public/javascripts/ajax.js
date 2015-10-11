@@ -32,6 +32,10 @@ function videosFromData(data) {
   return makeVideos(videos);
 }
 
+function addToStagedVideos(videos) {
+  stagedVideos = videos;
+}
+
 function storeLocally(video) {
   var dataString = JSON.stringify(video);
   playlist.setItem(video.videoId, dataString);

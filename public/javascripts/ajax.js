@@ -121,12 +121,12 @@ function embedVideo(url) {
 
 function playVideo() {
   document.getElementById('player').classList.remove('closed');
-  var listId = $(this).closest('ul');
+  var listId = $(this).closest('ul').attr("id");
   var listItem = $(this).closest('li');
   var id = listItem.attr('data-id');
   var video;
-  if (listId === 'search-results') {
-    // video = JSON.parse(searchResults[id]);
+  if (listId === 'searchlist') {
+    video = JSON.parse(searchResults[id]);
   } else {
     video = JSON.parse(playlist[id]);
   }

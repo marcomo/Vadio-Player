@@ -115,6 +115,31 @@ function getEmbedTemplate(type) {
   return document.importNode(template.content, true);
 }
 
+function embedVideo(url) {
+  var player = document.getElementById('player')
+  player.querySelector('iframe').src = url;
+}
+
+function playVideo(listId) {
+  document.getElementById('player').classList.remove('closed');
+  var listItem = $(this).closest('li');
+  var id = listItem.attr('data-id');
+  var video;
+  if (listId === 'search-results') {
+    // video = JSON.parse(searchResults[id]);
+  } else {
+    video = JSON.parse(playlist[id]);
+  }
+  var url = getVideoUrl(video);
+  embedVideo(url);
+}
+
+function bindPlayEvents(list) {
+  var list = document.getElementById(list);
+  var playButtons = list.querySelector('.play');
+  for(var i = 0; i < playButtons.length; i++) {
+    playButtons[i].addEventListener('click', playVideo(list.id), false);
+  }
 }
 
 function loadToSearchList(videos) {

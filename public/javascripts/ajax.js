@@ -51,6 +51,12 @@ function addToPlaylist() {
 
 function loadNoResults() {
   $("#data").html("Sorry, no results found.");
+function videosFromLocalStorage() {
+  var videos = playlistObjs.map(function(obj) {
+    return JSON.parse(obj);
+  });
+  stagedVideos = stagedVideos.concat(makeVideos(videos));
+  return stagedVideos;
 }
 
 function hideForm() {

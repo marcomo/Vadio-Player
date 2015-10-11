@@ -162,9 +162,26 @@ function loadToSearchList(videos) {
   bindPlayEvents('searchlist');
 }
 
-function showData(data) {
-  $("#data").html(data);
-};
+function loadToPlaylist(videos) {
+  var items = [];
+  for (var i = 0; i < videos.length; i++) {
+    var template = getTemplate('playlist');
+    var data = {
+      'artist': videos[i].artist,
+      'title': videos[i].title,
+      'image': videos[i].preferredThumb().url,
+      'id': videos[i].videoId
+    };
+    var clone = loadVideoTemplate(template, data);
+    items.push(clone);
+  };
+  var plist = document.getElementById('playlist');
+  var topResult = plist.firstChild;
+  for (var i = 0; i < items.length; i++) {
+    plist.insertBefore(items[i], topResult);
+  }
+  bindPlayEvents('playlist');
+}
 
 $(document).ready(function() {
     $("#search-vadio").on("submit", function(e) {

@@ -3,18 +3,10 @@ var resPrefs = ["medium", "high", "default"];
 function Video(obj) { 
   this.artist = obj.artist;
   this.title = obj.title;
-  this.id = obj.videoId;
-  this.type = obj.type;
+  this.videoId = obj.videoId;
   this.duration = obj.duration;
-  this.thumbs = obj.thumbnails;
-  this.images = imageURLs(this.thumbs);
-
-
-  function imageURLs(thumbs){
-    return thumbs.map(function(thumb){
-      return thumb.url;
-    });
-  };
+  this.thumbnails = obj.thumbnails;
+  this.videoType = obj.videoType;
 }
 
 Video.prototype = {

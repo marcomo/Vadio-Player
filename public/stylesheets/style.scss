@@ -2,14 +2,9 @@
 @import 'mixins.scss';
 @import 'modifiers.scss';
 
-$imageBase: 20vw;
 $borderRadius: .25rem;
-$previewImages:
-  "/images/one_republic.jpg"
-  "/images/bruno_mars.jpg"
-  "/images/katy_perry.jpg"
-  "/images/bastille.jpg"
-  "/images/farrell_williams.jpg";
+$imageBase: 20vw;
+
 #about {
   background-color: $color9;
   height: 20vh;
@@ -92,30 +87,12 @@ header {
   }
 }
 
-#preview {
-  @include pos-rel;
-  #start-search {
-    @include pos-abs;
 main {
   background-color: $color7;
   @include flex-item(4);
   overflow: hidden;
   #play-box {
     @include flex-parent;
-    @include flex-center;
-    #start-button {
-      font-size: 4rem;
-      color: white;
-      width: 8rem;
-      height: 8rem;
-      background-color: rgba(255,255,255,.5);
-      background-image: url(/images/search_icon.png);
-      background-position: center;
-      background-repeat: no-repeat;
-      border: 6px solid white;
-      border-radius: 8rem;
-      @include drop-shadow(6px, 6px, 6px, #333);
-    }
   }
 }
 

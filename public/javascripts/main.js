@@ -108,6 +108,14 @@ $(document).ready(function() {
     addToPlaylist(video);
   }
 
+  // Adds a video in the search list to the playlist
+  function removeFromPlaylist() {
+    var listItem = $(this).closest('li');
+    var id = listItem.attr('data-id');
+    playlist.removeItem(id);
+    listItem.fadeOut().hide();
+  }
+
 
   // Binds an event listener to all play buttons
   // for a specified list
@@ -128,6 +136,18 @@ $(document).ready(function() {
     
     for(var i = 0; i < addButtons.length; i++) {
       addButtons[i].addEventListener('click', addVideo, false);
+    }
+  }
+
+
+  // Binds an event listener to all add buttons
+  // for a specified list
+  function bindRemoveEvents() {
+    var searchList = document.getElementById('playlist');
+    var removeButtons = searchList.querySelectorAll('.minus');
+    
+    for(var i = 0; i < removeButtons.length; i++) {
+      removeButtons[i].addEventListener('click', removeFromPlaylist, false);
     }
   }
 
@@ -240,7 +260,10 @@ $(document).ready(function() {
     bindPlayEvents(listView);
     if (list === 'searchlist') {
       bindAddEvents(listView);
-    }
+    };
+    if (list === 'playlist') {
+      bindRemoveEvents();
+    };
   }
 
 

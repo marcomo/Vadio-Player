@@ -108,12 +108,22 @@ $(document).ready(function() {
     addToPlaylist(video);
   }
 
+
+  
+
+
   // Adds a video in the search list to the playlist
   function removeFromPlaylist() {
     var listItem = $(this).closest('li');
     var id = listItem.attr('data-id');
     playlist.removeItem(id);
-    listItem.fadeOut().hide();
+    // console.log(listItem.classList);
+    listItem.addClass('closed');
+
+    setTimeout(function() {
+      listItem.remove();
+    }, 500);
+    
   }
 
 

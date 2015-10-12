@@ -125,7 +125,12 @@ header {
 
 main {
   @include flex-item(4);
-  
+  // Firefox fix for flex
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  top: 160px;
+  // End firefox fix
   background-color: $color7;
   overflow: hidden;
   

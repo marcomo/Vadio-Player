@@ -52,6 +52,9 @@ to a playlist for watching later.
 - Tiled views
 - Play/Pause control from the lists
 - Handling of Vevo videos (I couldn't find any...)
+- Modularize client-side JS!
 
 ## Known Bugs:
 - If an item is searched twice, the search list shows two instances. When one instance is added to the playlist and then removed, the second instance cannot be added or played as the data has been removed from the data stores. This can be fixed by removing all instances of a search item when adding it to the playlist
+- When adding multiple items to playlist in a row, only the first clicked is added
+- Items in playlist don't stay in the order they were added (most recent first)

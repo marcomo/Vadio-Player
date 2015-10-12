@@ -13,7 +13,6 @@ window.onload = function() {
 
   while (fontsLoading === false) {
     i += 1;
-    console.log('fonts loading (', i, '): false');
     checkFontsLoading();
     if (i > 1000) {
       break;

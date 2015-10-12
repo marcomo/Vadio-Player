@@ -3,21 +3,32 @@ country_codes = [,'AD','AE','AF','AG','AI','AL','AM','AO','AQ','AR','AS','AT','A
 
 $(document).ready(function() {
 
+  var myform = document.getElementById('form');
   var country = document.getElementById('country');
+  var artist = document.getElementById('artist');
+  var title = document.getElementById('title');
   var submit = country.parentElement.querySelector('button');
 
+  function validCountry() {
+    var value = country.value.toUpperCase();
+    return country_codes.indexOf(value) > 0 || !country.value;
+  }
+
+
+
   country.onkeyup = function() {
-    var value = this.value.toUpperCase();
-    var isValid = country_codes.indexOf(value) > 0;
+    var isValid = validCountry();
     var classes = country.classList;
     
     classes.toggle('error', this.value && !isValid );
-
-    if (this.value && !isValid) {
-      submit.setAttribute('disabled', 'disabled');
-    } else {
-      submit.removeAttribute('disabled');
-    }
   }
 
+  myform.onkeyup = function() {
+    console.log();
+    if (validCountry() && (artist.value || title.value)) {
+      submit.removeAttribute('disabled');
+    } else {
+      submit.setAttribute('disabled', 'disabled');
+    } 
+  }
 });

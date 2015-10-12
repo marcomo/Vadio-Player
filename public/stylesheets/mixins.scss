@@ -181,6 +181,11 @@
   box-sizing: border-box;
 }
 
+@mixin centered-bg-image {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 // Effect mixins
 
 @mixin drop-shadow($x, $y, $blur, $color) {

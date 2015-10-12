@@ -157,45 +157,6 @@ main {
         background-color: desaturate($color9, 50%);
       }
     }
-
-    &.invisible {
-      height: 0;
-    }
-  }
-}
-
-#play-box {
-  @extend #search;
-  @include flex-parent;
-  @include flex-column;
-  #player {
-    background-color: $colorBGdark;
-    border-radius: $borderRadius;
-    margin-bottom: 1rem;
-    width: 100%;
-    height: 30%;
-    @extend .transition-height;
-    &.closed {
-      height: 0;
-      margin: 0;
-    }
-  }
-  ul.list {
-    @include flex-item(1);
-    li.result {
-      -webkit-transition: transform 200ms ease-in-out;
-      -o-transition: transform 200ms ease-in-out;
-      transition: transform 200ms ease-in-out;
-      color: white;
-      background-color: #333;
-      padding: 1rem;
-      border-radius: $borderRadius;
-      border: none;
-      margin-bottom: .25rem;
-      &.invisible {
-        @extend .invisible;
-      }
-    }
   }
 }
 
@@ -214,7 +175,7 @@ main {
   text-align: center;
 }
 
-#search-box {
+#list-box {
   @include flex-parent;
   @include space-around;
   @include inner-width;
@@ -227,7 +188,7 @@ main {
   #search .play {
     background-image: url(/images/glyphicons-174-play.png);
   }
-  #playlist .play {
+  #play-box .play {
     background-image: url(/images/glyphicons-174-play-reverse.png);
   }
   .plus {
@@ -236,36 +197,75 @@ main {
   .minus {
     background-image: url(/images/glyphicons-434-minus-reverse.png);
   }
-}
-
-#search {
-  @include flex-basis(48%);
-  @include flex-column;
-  li {
-    border-bottom: 1px solid rgba(0,0,0, .25);
-    padding: 1rem 0;
-    background-size: cover;
-    background-position: 100% 100%;
-    
-    @include flex-parent;
-    .thumb {
-      display: inline-block;
-      height: 3rem;
-      width: 3rem;
-      margin-right: 1rem;
-      background-size: cover;
-      background-position: center;
+  ul.list {
+    @include flex-item(1);
+    li.result {
+      -webkit-transition: transform 200ms ease-in-out;
+      -o-transition: transform 200ms ease-in-out;
+      transition: transform 200ms ease-in-out;
+      border-radius: $borderRadius;
+      padding: 1rem;
+      margin-bottom: .25rem;
     }
-    .info {
-      @include flex-item(3);
-      .title, .artist {
-        font-size: 1rem;
+  }
+  #search {
+    @include flex-basis(48%);
+    @include flex-column;
+    h1 {
+      border-bottom: 1px solid rgba(0,0,0, .25);
+    }
+    ul.list {
+      li.result {
+        @extend &h1;
+        padding: 1rem;
+        border: none;
+        
+        @include flex-parent;
+        .thumb {
+          display: inline-block;
+          height: 3rem;
+          width: 3rem;
+          margin-right: 1rem;
+          background-size: cover;
+          background-position: center;
+        }
+        .info {
+          @include flex-item(3);
+          .title, .artist {
+            font-size: 1rem;
+          }
+        }
+        .controls {
+          @include flex-parent;
+          @include flex-item(1);
+          @include flex-justify-end;
+        }
       }
     }
-    .controls {
-      @include flex-parent;
-      @include flex-item(1);
-      @include flex-justify-end;
+  }
+
+  #play-box {
+    @extend #search;
+    @include flex-parent;
+    @include flex-column;
+    ul.list {
+      li.result {
+        color: white;
+        background-color: $colorBGdark;
+      }
+    }
+    #player {
+      background-color: $colorBGdark;
+      border-radius: $borderRadius;
+      margin-bottom: 1rem;
+      width: 100%;
+      height: 30%;
+      @extend .transition-height;
+      &.closed {
+        height: 0;
+        margin: 0;
+      }
     }
   }
 }
+

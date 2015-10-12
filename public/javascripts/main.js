@@ -44,8 +44,8 @@ $(document).ready(function() {
   function loadVideoTemplate(clone, video) { 
     var bgUrl = 'url("' + video.image + '")';
     clone.querySelector('li').dataset.id = video.id;
-    clone.querySelector('.artist').innerText = video.artist;
-    clone.querySelector('.title').innerText = video.title;
+    clone.querySelector('.artist').textContent = video.artist;
+    clone.querySelector('.title').textContent = video.title;
     clone.querySelector('.thumb').style.backgroundImage = bgUrl;
     return clone;
   }

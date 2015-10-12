@@ -59,4 +59,3 @@ to a playlist for watching later.
 - When adding multiple items to playlist in a row, only the first clicked is added
 - Items in playlist don't stay in the order they were added (most recent first)
 - Safari is not animated height of list items on add and remove
-- Firefox is not displaying list item text

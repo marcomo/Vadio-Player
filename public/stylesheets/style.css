@@ -129,6 +129,10 @@ main {
   -webkit-flex: 4;
   -ms-flex: 4;
   flex: 4;
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  top: 160px;
   background-color: #C1DAD8;
   overflow: hidden; }
   main #play-box {
@@ -245,8 +249,9 @@ main {
     -ms-flex: 1;
     flex: 1; }
     #list-box ul.list li.result {
-      -webkit-transition: transform 200ms ease-in-out;
-      -o-transition: transform 200ms ease-in-out;
+      -webkit-transition: -webkit-transform 200ms ease-in-out;
+      -moz-transition: -moz-transform 200ms ease-in-out;
+      -o-transition: -o-transform 200ms ease-in-out;
       transition: transform 200ms ease-in-out;
       border-radius: 0.25rem;
       padding: 1rem;

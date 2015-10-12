@@ -6,22 +6,32 @@ queryString = require("querystring");
 
 app.use(router);
 
-// Get vadio API
 
+// Vadio API variables
 var vadioAPI = "api.vadio.com",
      context = "/video",
   apiVersion = "/v0.9c"
 
+
+
 // Requests
 
+// Main page route which loads the form and playlists
 router.get('/', function(req, res) {
   res.render('index');
 });
 
+// Route for AJAX request from client
+// Hands of to getVadio() which has a route
+// to the endpoint
 router.get('/searching', function(req, res){
   var params = req.query;
-  if (!params['country'])
+  if (!params['country']) {
     params['country'] = 'US';
+  } else {
+    params['country'] = params['country'].toUpperCase();
+  }
+
   getVadio(params, function(data){
     res.send(data);
   });

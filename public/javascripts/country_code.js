@@ -7,7 +7,6 @@ $(document).ready(function() {
   var submit = country.nextSibling;
 
   country.onkeyup = function() {
-    console.log('key pressed in country');
     var value = this.value.toUpperCase();
     var isValid = country_codes.indexOf(value) > 0;
     var classes = country.classList;

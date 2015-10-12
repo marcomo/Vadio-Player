@@ -1,9 +1,6 @@
 // A collection of videos saved by the user to their playlist
 var playlist = window.localStorage;
 
-var searchList = document.getElementById('searchlist');
-
-
 $(document).ready(function() {
 
   // An array of playlist video ids
@@ -111,7 +108,6 @@ $(document).ready(function() {
     loadToList([video], 'playlist');
     addToPlaylist(video);
     removeFromSearchlist(listItem);
-    console.log(searchResults);
   }
 
 
@@ -129,7 +125,6 @@ $(document).ready(function() {
   // Adds a video in the search list to the playlist
   function removeFromPlaylist() {
     var listItem = $(this).closest('li');
-    console.log(listItem);
     var id = listItem.attr('data-id');
     playlist.removeItem(id);
     listItem.addClass('closed');
@@ -137,7 +132,6 @@ $(document).ready(function() {
     setTimeout(function() {
       listItem.remove();
     }, 500);
-    
   }
 
 
@@ -316,7 +310,6 @@ $(document).ready(function() {
       loadToList(stagedVideos, 'searchlist');
       revealListItems('searchlist');
     }
-    console.log("search results: ", searchResults);
   }
 
 
@@ -334,6 +327,12 @@ $(document).ready(function() {
         span.classList.add('invisible');
       }, timeout);
     }
+  }
+
+
+  function clearMsgs() {
+    var msgBox = document.getElementById('message-box');
+    msgBox.querySelector('span').classList.add('invisible');
   }
 
 
@@ -357,6 +356,7 @@ $(document).ready(function() {
   // it to the view if it isn't a 504 result
   $('#search-vadio').on('submit', function(e) {
     e.preventDefault();
+    clearMsgs();
     var params = $(this).serialize();
     
     $.ajax({

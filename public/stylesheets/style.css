@@ -101,12 +101,12 @@ header {
     padding-top: 1rem; }
 
 main {
-  background-color: #C1DAD8;
   -webkit-box-flex: 4;
   -moz-box-flex: 4;
   -webkit-flex: 4;
   -ms-flex: 4;
   flex: 4;
+  background-color: #C1DAD8;
   overflow: hidden; }
   main #play-box {
     display: -webkit-box;
@@ -163,8 +163,7 @@ main {
     #form form label {
       text-transform: uppercase;
       color: #fe9c00;
-      display: block; }
-    #form form label {
+      display: block;
       margin: 10px; }
     #form form button:focus,
     #form form input[type='text']:focus,
@@ -189,7 +188,6 @@ main {
   margin-bottom: 1rem;
   color: white;
   font-size: 1rem;
-  text-align: center;
   text-align: center; }
   @media only screen and (min-width: 1920px) {
     #message-box {
@@ -253,15 +251,16 @@ main {
     -moz-flex-direction: column;
     flex-direction: column; }
     #list-box #search h1, #list-box #play-box h1, #list-box #search ul.list li.result, #list-box #play-box ul.list li.result {
-      border-bottom: 1px solid rgba(0, 0, 0, 0.25); }
+      border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+      margin-bottom: 1rem; }
     #list-box #search ul.list li.result, #list-box #play-box ul.list li.result {
-      padding: 1rem;
-      border: none;
       display: -webkit-box;
       display: -moz-box;
       display: -ms-flexbox;
       display: -webkit-flex;
-      display: flex; }
+      display: flex;
+      padding: 1rem;
+      border: none; }
       #list-box #search ul.list li.result .thumb, #list-box #play-box ul.list li.result .thumb {
         display: inline-block;
         height: 3rem;

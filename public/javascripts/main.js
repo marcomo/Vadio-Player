@@ -1,12 +1,16 @@
 // A collection of videos saved by the user to their playlist
 var playlist = window.localStorage;
 
+var searchList = document.getElementById('searchlist');
+
+
 $(document).ready(function() {
 
   // An array of playlist video ids
   var playlistIDs = Object.keys(playlist);
 
 
+  // An array of playlist objects
   var playlistObjs = objectifyPlaylist();
 
 
@@ -106,18 +110,28 @@ $(document).ready(function() {
     video = new Video(video);
     loadToList([video], 'playlist');
     addToPlaylist(video);
+    removeFromSearchlist(listItem);
+    console.log(searchResults);
   }
 
 
-  
+  // Remove a video from searchlist when it's added
+  // to the playlist
+  function removeFromSearchlist(item) {
+    delete searchResults[video.videoId];
+    $(item).addClass('closed'); 
+    setTimeout(function() {
+      $(item).remove();
+    }, 500);
+  }
 
 
   // Adds a video in the search list to the playlist
   function removeFromPlaylist() {
     var listItem = $(this).closest('li');
+    console.log(listItem);
     var id = listItem.attr('data-id');
     playlist.removeItem(id);
-    // console.log(listItem.classList);
     listItem.addClass('closed');
 
     setTimeout(function() {
@@ -150,11 +164,11 @@ $(document).ready(function() {
   }
 
 
-  // Binds an event listener to all add buttons
-  // for a specified list
+  // Binds an event listener to all minus buttons
+  // in the playlist
   function bindRemoveEvents() {
-    var searchList = document.getElementById('playlist');
-    var removeButtons = searchList.querySelectorAll('.minus');
+    var pList = document.getElementById('playlist');
+    var removeButtons = pList.querySelectorAll('.minus');
     
     for(var i = 0; i < removeButtons.length; i++) {
       removeButtons[i].addEventListener('click', removeFromPlaylist, false);
@@ -217,8 +231,8 @@ $(document).ready(function() {
   }
 
 
-  // Adds a single search result data 
-  // in searchResults array
+  // Adds a single search result data property
+  // from searchResults object
   function storeSearchResult(video) {
     var dataString = JSON.stringify(video);
     searchResults[video.videoId] = dataString;
@@ -302,6 +316,7 @@ $(document).ready(function() {
       loadToList(stagedVideos, 'searchlist');
       revealListItems('searchlist');
     }
+    console.log("search results: ", searchResults);
   }
 
 

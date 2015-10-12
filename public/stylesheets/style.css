@@ -8,7 +8,7 @@
   transform: scaleY(0);
   overflow: hidden; }
 
-.transition-height, #about, #list-box #play-box #player {
+.transition-height, #about {
   transition: height 400ms ease-in; }
 
 .transition-bgcolor, #form form button {
@@ -337,7 +337,7 @@ main {
       border-radius: 0.25rem;
       margin-bottom: 1rem;
       width: 100%;
-      height: 30%; }
+      height: 15rem; }
       #list-box #play-box #player.closed {
         height: 0;
         margin: 0; }

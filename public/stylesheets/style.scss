@@ -316,13 +316,11 @@ main {
     }
 
     #player {
-      @extend .transition-height;
-      
       background-color: $colorBGdark;
       border-radius: $borderRadius;
       margin-bottom: 1rem;
       width: 100%;
-      height: 30%;
+      height: 15rem;
       &.closed {
         height: 0;
         margin: 0;

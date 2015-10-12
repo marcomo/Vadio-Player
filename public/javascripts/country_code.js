@@ -4,7 +4,7 @@ country_codes = [,'AD','AE','AF','AG','AI','AL','AM','AO','AQ','AR','AS','AT','A
 $(document).ready(function() {
 
   var country = document.getElementById('country');
-  var submit = country.nextSibling;
+  var submit = country.parentElement.querySelector('button');
 
   country.onkeyup = function() {
     var value = this.value.toUpperCase();

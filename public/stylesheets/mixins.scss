@@ -82,6 +82,12 @@
   align-items: flex-end;
 }
 
+@mixin flex-align-baseline {
+  -webkit-align-items: baseline;
+  -moz-align-items: baseline;
+  align-items: baseline;
+}
+
 @mixin flex-justify-center {
   -webkit-justify-content: center;
   -moz-justify-content: center;

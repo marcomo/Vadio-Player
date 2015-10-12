@@ -4,7 +4,6 @@ window.onload = function() {
 
   function checkFontsLoading() {
     var htmlClasses = document.querySelector('html').classList;
-    console.log(htmlClasses);
     fontsLoading = htmlClasses.contains('wf-loading');
   }
 
@@ -16,8 +15,11 @@ window.onload = function() {
     i += 1;
     console.log('fonts loading (', i, '): false');
     checkFontsLoading();
+    if (i > 1000) {
+      break;
+    }
   }
   revealPage();
-  console.log("Fonts Loaded.");
-  console.log("Fully Loaded.");
+  // console.log("Fonts Loaded.");
+  // console.log("Fully Loaded.");
 }

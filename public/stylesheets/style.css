@@ -61,6 +61,29 @@ a {
 h1, #list-box #search ul.list li.result, #list-box #play-box ul.list li.result {
   font-size: 2rem; }
 
+button {
+  -webkit-appearance: none;
+  color: white;
+  font-weight: 600;
+  background-color: #BF6A28; }
+
+input[type='text'],
+textarea,
+button {
+  font-size: 1rem;
+  color: #333;
+  padding: 1rem;
+  margin: .5rem;
+  border: none;
+  border-radius: 0.25rem; }
+
+input[type='text'],
+textarea {
+  -webkit-flex-basis: 25%;
+  -moz-flex-basis: 25%;
+  flex-basis: 25%;
+  font-family: inherit; }
+
 header {
   max-width: 960px;
   width: 100%;
@@ -143,21 +166,6 @@ main {
     align-items: center;
     top: 0;
     opacity: 1; }
-    #form form input[type='text'],
-    #form form textarea,
-    #form form button {
-      font-size: 1rem;
-      color: #333;
-      padding: 1rem;
-      margin: .5rem;
-      border: none;
-      border-radius: 0.25rem; }
-    #form form input[type='text'],
-    #form form textarea {
-      -webkit-flex-basis: 25%;
-      -moz-flex-basis: 25%;
-      flex-basis: 25%;
-      font-family: inherit; }
     #form form #country.error {
       box-shadow: 0 0 10px rgba(255, 0, 0, 0.8); }
     #form form label {
@@ -259,8 +267,7 @@ main {
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex;
-      padding: 1rem;
-      border: none; }
+      padding: 1rem; }
       #list-box #search ul.list li.result .thumb, #list-box #play-box ul.list li.result .thumb {
         display: inline-block;
         height: 3rem;
@@ -299,6 +306,24 @@ main {
     -webkit-flex-direction: column;
     -moz-flex-direction: column;
     flex-direction: column; }
+    #list-box #play-box h1, #list-box #search ul.list #play-box li.result, #list-box #play-box ul.list li.result {
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: space-between;
+      -moz-justify-content: space-between;
+      justify-content: space-between;
+      -webkit-align-items: flex-end;
+      -moz-align-items: flex-end;
+      align-items: flex-end; }
+      #list-box #play-box h1 button, #list-box #search ul.list #play-box li.result button, #list-box #play-box ul.list li.result button {
+        font-size: 1rem;
+        font-weight: normal;
+        padding: 0.25rem 0.5rem;
+        margin: 0 0 0.5rem 0;
+        color: white; }
     #list-box #play-box ul.list li.result {
       color: white;
       background-color: #333; }

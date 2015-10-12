@@ -27,6 +27,10 @@ $(document).ready(function() {
   var searchResults = {};
 
 
+  // The clear button which clears all the items in the playlist
+  var clearButton = document.getElementById('clear-playlist');
+
+
   // Gets the template for list items from HTML <head>
   // and creates a clone
   function getListTemplate(type) {
@@ -122,7 +126,7 @@ $(document).ready(function() {
   }
 
 
-  // Adds a video in the search list to the playlist
+  // Removes a video in the playlist by way of the minus button
   function removeFromPlaylist() {
     var listItem = $(this).closest('li');
     var id = listItem.attr('data-id');
@@ -330,10 +334,36 @@ $(document).ready(function() {
   }
 
 
+  // Clears the message box area on next search submit
   function clearMsgs() {
     var msgBox = document.getElementById('message-box');
     msgBox.querySelector('span').classList.add('invisible');
   }
+
+
+  // Clears the localStorage data and the playlist view
+  function clearPlaylist() {
+    var pList = document.getElementById('playlist');
+    var playlistItems = pList.childNodes;
+
+
+    for (var i = 0; i < playlistItems.length; i++) {
+      playlistItems[i].classList.add('closed');
+    }
+
+    setTimeout(function() {
+      while (pList.firstChild) {
+        pList.removeChild(pList.firstChild);
+      }
+    }, 500);
+
+    playlist.clear();
+
+    console.log(playlistItems);
+    console.log(playlist);
+  }
+
+  clearButton.addEventListener('click', clearPlaylist, false);
 
 
   // Loads the playlist into view

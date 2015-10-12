@@ -7,7 +7,7 @@
 }
 
 .closed {
-  height: 0;
+  transform: scaleY(0);
   overflow: hidden;
 }
 

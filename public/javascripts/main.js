@@ -1,7 +1,6 @@
 // A collection of videos saved by the user to their playlist
 var playlist = window.localStorage;
 
-
 $(document).ready(function() {
 
   // An array of playlist video ids
@@ -227,7 +226,6 @@ $(document).ready(function() {
 
   // Captures the data needed for the view
   function selectData(video) {
-    console.log(video);
     return {
       'artist': video.artist,
       'title': video.title,
@@ -252,19 +250,33 @@ $(document).ready(function() {
 
     // Then load them all at once
     for (var i = 0; i < items.length; i++) {
-      var topResult = listView.firstChild;
-      console.log(topResult);
-      console.log(items[i]);
-      listView.insertBefore(items[i], topResult);
+      var firstChild = listView.firstChild;
+      listView.insertBefore(items[i], firstChild);
     }
 
     bindPlayEvents(listView);
     if (list === 'searchlist') {
-      bindAddEvents(listView);
+      bindAddEvents();
     };
     if (list === 'playlist') {
       bindRemoveEvents();
     };
+
+    revealListItems(list);
+  }
+
+
+  function revealListItems(list) {
+    var listView = document.getElementById(list);
+    var hidden = listView.querySelectorAll('.closed');
+    
+    function revealer(item) { 
+      for (var i = 0; i < hidden.length; i++) {
+        hidden[i].classList.remove('closed');
+      }
+    };
+
+    setTimeout(function() { revealer() }, 500);
   }
 
 
@@ -278,6 +290,7 @@ $(document).ready(function() {
       addToSearchResults(newVideos);
       stagedVideos = newVideos;
       loadToList(stagedVideos, 'searchlist');
+      revealListItems('searchlist');
     }
   }
 

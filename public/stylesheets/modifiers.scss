@@ -7,6 +7,9 @@
 }
 
 .closed {
+  -webkit-transform: scaleY(0);
+  -moz-transform: scaleY(0);
+  -o-transform: scaleY(0);
   transform: scaleY(0);
   overflow: hidden;
 }

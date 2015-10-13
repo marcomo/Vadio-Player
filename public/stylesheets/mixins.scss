@@ -203,7 +203,17 @@
 // Animations
 
 @mixin transition($prop, $dur, $timing) {
-  transition: $prop $dur $timing;
+  -webkit-transition: -webkit-#{$prop} $dur $timing;
+  -moz-transition: -moz-#{$prop} $dur $timing;
+  -o-transition: -o-#{$prop} $dur $timing;
+  transition: #{$prop} $dur $timing;
+}
+
+@mixin transform($value) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -o-transform: $value;
+  transform: $value;
 }
 
 @mixin keyframes($name) {

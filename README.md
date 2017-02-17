@@ -42,17 +42,17 @@ to a playlist for watching later.
   - jQuery
 
 ## ToDos:
-- Route to different contexts based on user provided parameters
-  - If only a title is provided, route to `/video`
-  - If only an artist name is provided, route to `/artist`
-  - If a title and artist partial is provided, route to `/recording`
-- Reordering of playlist items with up/down controls and/or drag-n-drop
-- Multiple playlists
-- Play queue (e.g. YouTube)
-- Tiled views
-- Play/Pause control from the lists
-- Handling of Vevo videos (I couldn't find any...)
-- Modularize client-side JS!
+- [ ] Route to different contexts based on user provided parameters
+  - [ ] If only a title is provided, route to `/video`
+  - [ ] If only an artist name is provided, route to `/artist`
+  - [ ] If a title and artist partial is provided, route to `/recording`
+- [ ] Reordering of playlist items with up/down controls and/or drag-n-drop
+- [ ] Multiple playlists
+- [ ] Play queue (e.g. YouTube)
+- [ ] Tiled views
+- [ ] Play/Pause control from the lists
+- [ ] Handling of Vevo videos (I couldn't find any...)
+- [ ] Modularize client-side JS!
 
 ## Known Bugs:
 - If an item is searched twice, the search list shows two instances. When one instance is added to the playlist and then removed, the second instance cannot be added or played as the data has been removed from the data stores. This can be fixed by removing all instances of a search item when adding it to the playlist
